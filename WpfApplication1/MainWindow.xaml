@@ -6,23 +6,33 @@
         xmlns:local="clr-namespace:WpfApplication1"
         xmlns:controls="clr-namespace:WpfApplication1.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="620.455">
-    <Grid d:IsHidden="True">
+        Title="MainWindow" Height="350" Width="620">
 
-        <controls:GridCanvas
-                x:Name="_canvas" 
-                HorizontalAlignment="Left" 
-                Margin="10,10,0,0" 
-                VerticalAlignment="Top" 
-                Background="#FFB95050"
-                MouseMove="_canvas_MouseMove"
-                MouseUp="_canvas_MouseUp"
-                MouseDown="_canvas_MouseDown" 
-                Width="500" 
-                Height="300"/>
+    <Window.Resources>
+        <local:AddValueConverter x:Key="AddValueConverter"/>
+    </Window.Resources>
+
+    <DockPanel Name="dockPanel" HorizontalAlignment="Stretch" Margin="10,20" VerticalAlignment="Stretch" Background="LightGray" LastChildFill="True">
+        <StackPanel DockPanel.Dock="Left" Background="Yellow" Width="100">
+            <Button x:Name="button3" DockPanel.Dock="Right" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="61" Click="button_Copy1_Click"/>
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Right" Background="Aqua" Width="100">
+            <Button x:Name="button" DockPanel.Dock="Right" Content="+" HorizontalAlignment="Center" VerticalAlignment="Top" Width="61" Click="button_Click"/>
+            <Button x:Name="button_Copy" DockPanel.Dock="Right" Content="-" HorizontalAlignment="Center" Width="61" Click="button_Click"/>
+        </StackPanel>
+
+        <!--<Canvas Background="Blue"></Canvas>-->
         
-        <Button x:Name="button" Content="+" HorizontalAlignment="Left" Margin="527,28,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <Button x:Name="button_Copy1" Content="-" HorizontalAlignment="Left" Margin="527,55,0,0" VerticalAlignment="Top" Width="75" Click="button_Copy1_Click"/>
-
-    </Grid>
+        <controls:GridCanvas
+        	x:Name="_canvas" 
+        	Background="#FFB95050"
+        	MouseMove="_canvas_MouseMove"
+        	MouseUp="_canvas_MouseUp"
+        	MouseDown="_canvas_MouseDown"
+            Height="{Binding ElementName=dockPanel, Path=ActualHeight}"
+            Width="{Binding ElementName=dockPanel, Path=ActualWidth, Converter={StaticResource AddValueConverter}, ConverterParameter=-200}"
+            />
+            
+    </DockPanel>
 </Window>

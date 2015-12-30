@@ -52,6 +52,5 @@ namespace WpfApplication1.Controls
                 this.Children.Add(drawable.GetUIElement());
             }
         }
-        
     }
 }
