@@ -55,7 +55,7 @@ namespace WpfApplication1
 
             Clear();
 
-            for (int i = 0; i < _canvas.Width; i += Width)
+            for (int i = 0; i < _canvas.ActualWidth; i += Width)
             {
                 _lines.Add(new Line()
                 {
@@ -64,11 +64,11 @@ namespace WpfApplication1
                     X1 = i,
                     Y1 = 0,
                     X2 = i,
-                    Y2 = _canvas.Height
+                    Y2 = _canvas.ActualHeight
                 });
             }
 
-            for (int i = 0; i < _canvas.Height; i += Width)
+            for (int i = 0; i < _canvas.ActualHeight; i += Width)
             {
                 _lines.Add(new Line()
                 {
@@ -76,7 +76,7 @@ namespace WpfApplication1
                     StrokeThickness = 1,
                     X1 = 0,
                     Y1 = i,
-                    X2 = _canvas.Width,
+                    X2 = _canvas.ActualWidth,
                     Y2 = i
                 });
             }

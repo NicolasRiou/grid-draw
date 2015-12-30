@@ -28,6 +28,13 @@ namespace WpfApplication1.Controls
         {
             Grid = new Grid(this);
             _drawables = new Dictionary<Point, IDrawable>();
+
+            this.SizeChanged += GridCanvas_SizeChanged;
+        }
+
+        private void GridCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Grid.Draw();
         }
 
         public override void EndInit()

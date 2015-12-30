@@ -55,5 +55,10 @@ namespace WpfApplication1
             _canvas.Grid.Width = Math.Max(_canvas.Grid.Width - step, 10);
             _canvas.Grid.Draw();
         }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            _canvas.Grid.Draw();
+        }
     }
 }
