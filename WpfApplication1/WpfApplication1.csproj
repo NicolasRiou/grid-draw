@@ -56,9 +56,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converter\AddValueConverter.cs" />
+    <Compile Include="DrawingTools\Eraser.cs" />
     <Compile Include="GridCanvas.cs" />
     <Compile Include="Drawables\IDrawable.cs" />
     <Compile Include="Drawables\Square.cs" />
+    <Compile Include="DrawingTools\IDrawingTool.cs" />
+    <Compile Include="DrawingTools\SquareMaker.cs" />
     <Compile Include="ToolSelector.xaml.cs">
       <DependentUpon>ToolSelector.xaml</DependentUpon>
     </Compile>

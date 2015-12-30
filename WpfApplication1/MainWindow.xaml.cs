@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApplication1.DrawingTools;
 
 namespace WpfApplication1
 {
@@ -20,45 +21,53 @@ namespace WpfApplication1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IDrawingTool _tool;
+
+        private SquareMaker _squareMaker;
+        private Eraser _eraser;
+
+
         public MainWindow()
         {
             InitializeComponent();
+            _squareMaker = new SquareMaker(_canvas);
+            _eraser = new Eraser(_canvas);
+            _tool = _squareMaker;
         }
 
         private void _canvas_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Released)
-                return;
-
-            _canvas.AddDrawable(e.GetPosition(_canvas), new Square(_canvas.Grid.Width));
+            _tool.MouseMove(sender, e);
         }
 
         private void _canvas_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            _tool.MouseUp(sender, e);
         }
 
         private void _canvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            _canvas.AddDrawable(e.GetPosition(_canvas), new Square(_canvas.Grid.Width));
+            _tool.MouseDown(sender, e);
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            int step = 10;
-            _canvas.Grid.Width = Math.Min(_canvas.Grid.Width + step, (int)_canvas.Height);
-            _canvas.Grid.Draw();
+            _canvas.GridPlus();
         }
 
         private void button_Copy1_Click(object sender, RoutedEventArgs e)
         {
-            int step = 10;
-            _canvas.Grid.Width = Math.Max(_canvas.Grid.Width - step, 10);
-            _canvas.Grid.Draw();
+            _canvas.GridMinus();
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            _canvas.Grid.Draw();
+            _tool = _squareMaker;
+        }
+
+        private void button2_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            _tool = _eraser;
         }
     }
 }

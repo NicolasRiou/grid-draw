@@ -13,7 +13,7 @@ namespace UnitTestProject1
         public void TestMethod1()
         {
 
-            var g = new WpfApplication1.Grid(new Canvas());
+            var g = new WpfApplication1.Grid(new Canvas(), 20);
 
             g.Width = 20;
 

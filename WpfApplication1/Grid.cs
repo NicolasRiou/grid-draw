@@ -25,11 +25,11 @@ namespace WpfApplication1
         /// Constructeur
         /// </summary>
         /// <param name="canvas"></param>
-        public Grid(Canvas canvas)
+        public Grid(Canvas canvas, int width)
         {
             _lines = new List<Line>();
             _canvas = canvas;
-            Width = 20;
+            Width = width;
         }
 
 
@@ -52,7 +52,6 @@ namespace WpfApplication1
         /// </summary>
         public void Draw()
         {
-
             Clear();
 
             for (int i = 0; i < _canvas.ActualWidth; i += Width)
@@ -84,6 +83,7 @@ namespace WpfApplication1
             foreach (var item in _lines)
             {
                 _canvas.Children.Add(item);
+                Canvas.SetZIndex(item, -10);
             }
         }
 
@@ -100,7 +100,5 @@ namespace WpfApplication1
                 Y = (point.Y - (point.Y % Width))
             };
         }
-
-
     }
 }

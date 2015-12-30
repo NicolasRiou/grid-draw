@@ -15,6 +15,11 @@ namespace WpfApplication1
         private Rectangle _rectangle;
         private int _width;
 
+        public Square()
+        {
+
+        }
+
         public Square(int width)
         {
             _width = width;
@@ -37,6 +42,11 @@ namespace WpfApplication1
         public UIElement GetUIElement()
         {
             return _rectangle;
+        }
+
+        public void SetWidth(int width)
+        {
+            _width = width;
         }
     }
 }

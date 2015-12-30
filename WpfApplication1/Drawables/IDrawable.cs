@@ -6,5 +6,6 @@ namespace WpfApplication1
     {
         UIElement GetUIElement();
         void Draw(Point position);
+        void SetWidth(int width);
     }
 }
